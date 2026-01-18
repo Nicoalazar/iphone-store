@@ -6,6 +6,8 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 const btnCart = document.getElementById("btnCart");
 const btnUp = document.getElementById("btnUp");
 const paymentModal = new bootstrap.Modal(document.getElementById("paymentModal"));
+const IMAGE_BASE_PATH = "img/products/";
+let apiFailed = false;
 
 
 //Verificar si hay productos en el carrito
@@ -18,7 +20,7 @@ fetch("https://fakestoreapi.in/api/products/category?type=mobile")
     .then((response) => response.json())
     .then((resp) => {
         products= resp.products.filter((product) => product.brand === "apple").sort((a, b) => a.price - b.price);
-        renderProducts(products);
+        renderProducts(products, apiFailed);
 
     })
     .catch((error) => {
@@ -26,8 +28,9 @@ fetch("https://fakestoreapi.in/api/products/category?type=mobile")
         fetch("/iphone-store/data/products.json")
             .then((response) => response.json())
             .then((localProducts) => {
+                apiFailed = true;
                 products = localProducts.sort((a, b) => a.price - b.price);
-                renderProducts(products);
+                renderProducts(products, apiFailed);
                 console.log("Productos cargados desde JSON local");
             })
             .catch((localError) => {
@@ -36,13 +39,18 @@ fetch("https://fakestoreapi.in/api/products/category?type=mobile")
             });
     });
 
-function renderProducts(products) {
+function renderProducts(products, apiFailed) {
         products.forEach((product) => {
         const card = `
             <div class="card">
-                <div class="card-image">
-                    <img src="${product.image}" alt="${product.title}" />
-                </div>
+                ${apiFailed ? 
+                    `<div class="card-image">
+                        <img src="${IMAGE_BASE_PATH}${product.image}" alt="${product.title}" />
+                    </div>` 
+                    : `<div class="card-image">
+                            <img src="${product.image}" alt="${product.title}" />
+                        </div>`}
+                    
                 <div class="card-title">
                     <h3>${product.title}</h3>
                 </div>
