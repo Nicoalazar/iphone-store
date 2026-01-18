@@ -44,7 +44,7 @@
 
 ## Despliegue
 
-El proyecto está desplegado en un hosting gratuito. Accede al sitio en [iPhone Store Online](https://tu-sitio-en-netlify-o-github-pages).
+El proyecto está desplegado en un hosting gratuito. Accede al sitio en [iPhone Store Online](https://nicoalazar.github.io/iphone-store/).
 
 ## Próximos Pasos
 

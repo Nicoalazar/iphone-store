@@ -2,28 +2,28 @@
   {
     "id": 1,
     "title": "iPhone 15",
-    "image": "iphone-store/img/products/15.png",
+    "image": "/iphone-store/img/products/15.png",
     "shortDescription": "Chip A16 Bionic, cámara principal de 48MP, Dynamic Island y USB-C",
     "price": 799
   },
   {
     "id": 2,
     "title": "iPhone 16",
-    "image": "iphone-store/img/products/16.png",
+    "image": "/iphone-store/img/products/16.png",
     "shortDescription": "Chip A18, botón de control de cámara, cámara principal de 48MP y diseño renovado",
     "price": 899
   },
   {
     "id": 3,
     "title": "iPhone 16 Pro",
-    "image": "iphone-store/img/products/16pro.png",
+    "image": "/iphone-store/img/products/16pro.png",
     "shortDescription": "Chip A18 Pro, sistema de cámaras pro con zoom óptico 5x, pantalla Super Retina XDR de 6.3\"",
     "price": 1099
   },
   {
     "id": 4,
     "title": "iPhone 17",
-    "image": "iphone-store/img/products/17.png",
+    "image": "/iphone-store/img/products/17.png",
     "shortDescription": "Próxima generación con mejoras en rendimiento y cámaras (especificaciones pendientes de anuncio oficial)",
     "price": 999
   }
