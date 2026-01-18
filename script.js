@@ -18,30 +18,46 @@ fetch("https://fakestoreapi.in/api/products/category?type=mobile")
     .then((response) => response.json())
     .then((resp) => {
         products= resp.products.filter((product) => product.brand === "apple").sort((a, b) => a.price - b.price);
+        renderProducts(products);
 
-        products.forEach((product) => {
-            const card = `
-                <div class="card">
-                    <div class="card-image">
-                       <img src="${product.image}" alt="${product.title}" />
-                    </div>
-                    <div class="card-title">
-                        <h3>${product.title.slice(6)}</h3>
-                    </div>
-                    <div class="card-description">
-                        <button class="btn-description" onclick="showDescription(this)" data-id=${product.id}>Ver descripción</button>
-                    </div>
-                    <div class="card-price">                    
-                    <p>Precio: $${product.price}</p>
-                    </div>
-                    <button class="btn-add-cart" onclick="addToCart(this.parentElement)" data-id="${product.id}">Añadir al carrito</button>
-                </div>
-            `;
-            productsContainer.innerHTML += card;
-        });
     })
-    .catch((error) => console.error("Error al obtener los productos:", error));
+    .catch((error) => {
+        console.error("Error al obtener los productos:", error);
+        fetch("./data/products.json")
+            .then((response) => response.json())
+            .then((localProducts) => {
+                products = localProducts.sort((a, b) => a.price - b.price);
+                renderProducts(products);
+                console.log("Productos cargados desde JSON local");
+            })
+            .catch((localError) => {
+                console.error("Error al cargar productos locales:", localError);
+                productsContainer.innerHTML = '<p class="text-center text-danger">Error al cargar los productos</p>';
+            });
+    });
 
+function renderProducts(products) {
+        products.forEach((product) => {
+        const card = `
+            <div class="card">
+                <div class="card-image">
+                    <img src="${product.image}" alt="${product.title}" />
+                </div>
+                <div class="card-title">
+                    <h3>${product.title}</h3>
+                </div>
+                <div class="card-description">
+                    <button class="btn-description" onclick="showDescription(this)" data-id=${product.id}>Ver descripción</button>
+                </div>
+                <div class="card-price">                    
+                <p>Precio: $${product.price}</p>
+                </div>
+                <button class="btn-add-cart" onclick="addToCart(this.parentElement)" data-id="${product.id}">Añadir al carrito</button>
+            </div>
+        `;
+        productsContainer.innerHTML += card;
+    });
+}
    
 /**
  * Agrega un producto al carrito de compras.
@@ -103,8 +119,8 @@ function showDescription(btn) {
         const encontrado = products.find((product) => product.id == id); 
 
         if (encontrado) {
-            document.getElementById("productModalLabel").innerText = `Descripción de ${encontrado.model}`;
-            document.getElementById("productDescription").innerText = encontrado.description;
+            document.getElementById("productModalLabel").innerText = `Descripción de ${encontrado.title}`;
+            document.getElementById("productDescription").innerText = encontrado.shortDescription;
 
             const productModal = new bootstrap.Modal(document.getElementById("productModal"));
             productModal.show();
