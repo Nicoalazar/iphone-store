@@ -28,11 +28,11 @@
 
 1. Clona este repositorio:
    ```bash
-   git clone https://github.com/Nicoalazar/TalentoTech.git
+   git clone https://github.com/Nicoalazar/iphone-store.git
    ```
 2. Accede a la carpeta del proyecto:
    ```bash
-   cd TalentoTech
+   cd iphone-store
    ```
 3. Abre el archivo `index.html` en tu navegador para explorar el sitio web.
 

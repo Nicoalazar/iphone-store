@@ -23,7 +23,7 @@ fetch("https://fakestoreapi.in/api/products/category?type=mobile")
     })
     .catch((error) => {
         console.error("Error al obtener los productos:", error);
-        fetch("/TalentoTech/data/products.json")
+        fetch("/iphone-store/data/products.json")
             .then((response) => response.json())
             .then((localProducts) => {
                 products = localProducts.sort((a, b) => a.price - b.price);
