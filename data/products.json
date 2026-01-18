@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "iPhone 15",
-    "image": "/img/products/15.png",
+    "image": "iphone-store/img/products/15.png",
     "shortDescription": "Chip A16 Bionic, cámara principal de 48MP, Dynamic Island y USB-C",
     "price": 799
   },
