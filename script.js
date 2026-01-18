@@ -6,7 +6,7 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 const btnCart = document.getElementById("btnCart");
 const btnUp = document.getElementById("btnUp");
 const paymentModal = new bootstrap.Modal(document.getElementById("paymentModal"));
-const IMAGE_BASE_PATH = "iphone-store/img/products/";
+const IMAGE_BASE_PATH = "img/products/";
 let apiFailed = false;
 
 //Verificar si hay productos en el carrito
