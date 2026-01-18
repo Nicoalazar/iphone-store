@@ -24,7 +24,7 @@ fetch("https://fakestoreapi.in/api/products/category?type=mobile")
     })
     .catch((error) => {
         console.error("Error al obtener los productos:", error);
-        fetch("/data/products.json")
+        fetch("/iphone-store/data/products.json")
             .then((response) => response.json())
             .then((localProducts) => {
                 apiFailed = true;
